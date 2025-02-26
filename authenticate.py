@@ -4,6 +4,11 @@ import requests
 import passwords
 
 username = passwords.username
-password = passwords.password
+token = passwords.token
 
-requests.get("https://httpbin.org/basic-auth/tiffany/nugget", auth = (username, password))
+url = f"https://api.github.com/users/{username}"
+
+response = requests.get(url, auth = (username, token))
+
+print("Status: " + str(response.status_code))
+print(response.text)
